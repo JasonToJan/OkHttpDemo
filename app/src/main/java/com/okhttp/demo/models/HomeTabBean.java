@@ -1,0 +1,223 @@
+package com.okhttp.demo.models;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+import java.util.List;
+
+public class HomeTabBean implements Serializable, Parcelable {
+
+    /**
+     * id : 28
+     * name : 鲤鱼游戏中心
+     * type : 1
+     * changeKey : 3d45333674680095acbaabc40a4e1854
+     * tabList : [{"id":5,"tabName":"tab名称","tabIcon":"http://image.res.meizu.com/image/miniapp/d015e9e3405d432f8ad7f127a222e256z","order":1,"blockList":[{"id":14,"title":"区域标题_1","order":1,"key":10,"showName":1,"showMax":12,"content":[{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":1,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":2,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":3,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":4,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":5,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":6,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":7,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":8,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":9,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":10,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":11,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":12,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"ceshi.sucai","name":"测试素材","rpkId":649,"order":13,"iconUrl":"http://image.res.meizu.com/image/miniapp/81bafd65a88b46d38076015b14ab0c9fz","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"huigui","name":"回归测试","rpkId":480,"order":14,"iconUrl":"http://image.res.meizu.com/image/miniapp/e2deab1573b14015a5565702abb05fb4z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":16,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":17,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.njtd.ycyxd.mz","name":"勇闯英雄岛","rpkId":579,"order":18,"iconUrl":"http://image.res.meizu.com/image/miniapp/bf3653d904a74166bc5636cff2e1c730z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xdkj.scq.kyx.mz","name":"生存球","rpkId":297,"order":19,"iconUrl":"http://image.res.meizu.com/image/miniapp/ec125c5e55b845699afdc61aab8b3114z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xh.ybhz.meizu","name":"一笔画猪","rpkId":578,"order":20,"iconUrl":"http://image.res.meizu.com/image/miniapp/2b6b9f4a29de402f9702223ea4f8bac3z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":21,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":22,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":23,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":24,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":25,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":26,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.td.qioutanchishe1.mz","name":"球球贪吃蛇","rpkId":554,"order":27,"iconUrl":"http://image.res.meizu.com/image/miniapp/ae282ab75de3433f9d750116d3e254f8z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.td.htbkkrpk.mz","name":"合体吧块块","rpkId":577,"order":28,"iconUrl":"http://image.res.meizu.com/image/miniapp/f5d81d0c1ae24b41b29dbd83f4041ec1z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.ggjr","name":"广告接入测试1","rpkId":568,"order":29,"iconUrl":"http://image.res.meizu.com/image/miniapp/b745d897420441768230743255152ecez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"xbmzh5","name":"小宝当皇帝","rpkId":469,"order":30,"iconUrl":"http://image.res.meizu.com/image/miniapp/a4577bc31e8a4b85acc901e8506d198ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.klt.game.dycxy.kyx.meizu","name":"大鱼吃小鱼经典版","rpkId":132,"order":31,"iconUrl":"http://image.res.meizu.com/image/miniapp/7677458c31f44074be377f95cefffadez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.kyx.dldl.mz","name":"斗罗大陆","rpkId":496,"order":32,"iconUrl":"http://image.res.meizu.com/image/miniapp/5415f59f86a248efa27bedc83e8c2de5z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.qm.shendao","name":"神道","rpkId":503,"order":33,"iconUrl":"http://image.res.meizu.com/image/miniapp/edc61317dd2848309a0a403b7a4a179dz","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.zsb.cn","name":"优惠券测试（更新版本）","rpkId":470,"order":34,"iconUrl":"http://image.res.meizu.com/image/miniapp/37830591e4c2475fbda1cc4dba06c575z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.fx.myzg.kyx.mz","name":"命运战歌","rpkId":467,"order":35,"iconUrl":"http://image.res.meizu.com/image/miniapp/f8671dbfb4484bf18b555130a9f47594z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.webmobile","name":"开发调式版本","rpkId":464,"order":36,"iconUrl":"http://image.res.meizu.com/image/miniapp/8c41cbe7493d412981537e8926a9c3a6z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.meizu.ab","name":"就是想看看游戏名称过长客户端如何显示","rpkId":461,"order":37,"iconUrl":"http://image.res.meizu.com/image/miniapp/3fe7bd3e0d2448d18868b176aea43384z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null}]},{"id":15,"title":"区域标题_2","order":2,"key":30,"showName":1,"showMax":4,"content":[{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":1,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":"adsfadfasdfasdf","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":2,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":3,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":4,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":5,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":6,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":7,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":8,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":9,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":10,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":11,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"ceshi.sucai","name":"测试素材","rpkId":649,"order":12,"iconUrl":"http://image.res.meizu.com/image/miniapp/81bafd65a88b46d38076015b14ab0c9fz","playCount":0,"avatars":null,"simpleDesc":"asdasd","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null}]},{"id":16,"title":"区域标题","order":3,"key":190,"showName":1,"showMax":20,"content":[{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":1,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":2,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":3,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":4,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":5,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":6,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":7,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":8,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":9,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":10,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"ceshi.sucai","name":"测试素材","rpkId":649,"order":11,"iconUrl":"http://image.res.meizu.com/image/miniapp/81bafd65a88b46d38076015b14ab0c9fz","playCount":0,"avatars":null,"simpleDesc":"asdasd","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"huigui","name":"回归测试","rpkId":480,"order":12,"iconUrl":"http://image.res.meizu.com/image/miniapp/e2deab1573b14015a5565702abb05fb4z","playCount":0,"avatars":null,"simpleDesc":"一句话描述长","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":14,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":"adsfadfasdfasdf","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":15,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":"adsfadfasdfasdf","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.njtd.ycyxd.mz","name":"勇闯英雄岛","rpkId":579,"order":16,"iconUrl":"http://image.res.meizu.com/image/miniapp/bf3653d904a74166bc5636cff2e1c730z","playCount":0,"avatars":null,"simpleDesc":"测试广告0218","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xdkj.scq.kyx.mz","name":"生存球","rpkId":297,"order":17,"iconUrl":"http://image.res.meizu.com/image/miniapp/ec125c5e55b845699afdc61aab8b3114z","playCount":0,"avatars":null,"simpleDesc":"生存球来玩耍吧","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xh.ybhz.meizu","name":"一笔画猪","rpkId":578,"order":18,"iconUrl":"http://image.res.meizu.com/image/miniapp/2b6b9f4a29de402f9702223ea4f8bac3z","playCount":0,"avatars":null,"simpleDesc":"推荐语(一句话描","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":19,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":"天下五绝之首12345","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":20,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":"天下五绝之首12345","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":21,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":"天下五绝之首12345","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null}]}]}]
+     */
+    private int id;
+    private String name;
+    private int type;
+    private List<TabListBean> tabList;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public List<TabListBean> getTabList() {
+        return tabList;
+    }
+
+    public void setTabList(List<TabListBean> tabList) {
+        this.tabList = tabList;
+    }
+
+    public static class TabListBean implements Serializable, Parcelable {
+        /**
+         * id : 5
+         * tabName : tab名称
+         * tabIcon : http://image.res.meizu.com/image/miniapp/d015e9e3405d432f8ad7f127a222e256z
+         * order : 1
+         * blockList : [{"id":14,"title":"区域标题_1","order":1,"key":10,"showName":1,"showMax":12,"content":[{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":1,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":2,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":3,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":4,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":5,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":6,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":7,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":8,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":9,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":10,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":11,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":12,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"ceshi.sucai","name":"测试素材","rpkId":649,"order":13,"iconUrl":"http://image.res.meizu.com/image/miniapp/81bafd65a88b46d38076015b14ab0c9fz","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"huigui","name":"回归测试","rpkId":480,"order":14,"iconUrl":"http://image.res.meizu.com/image/miniapp/e2deab1573b14015a5565702abb05fb4z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":16,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":17,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.njtd.ycyxd.mz","name":"勇闯英雄岛","rpkId":579,"order":18,"iconUrl":"http://image.res.meizu.com/image/miniapp/bf3653d904a74166bc5636cff2e1c730z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xdkj.scq.kyx.mz","name":"生存球","rpkId":297,"order":19,"iconUrl":"http://image.res.meizu.com/image/miniapp/ec125c5e55b845699afdc61aab8b3114z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xh.ybhz.meizu","name":"一笔画猪","rpkId":578,"order":20,"iconUrl":"http://image.res.meizu.com/image/miniapp/2b6b9f4a29de402f9702223ea4f8bac3z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":21,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":22,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":23,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":24,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":25,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":26,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.td.qioutanchishe1.mz","name":"球球贪吃蛇","rpkId":554,"order":27,"iconUrl":"http://image.res.meizu.com/image/miniapp/ae282ab75de3433f9d750116d3e254f8z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.td.htbkkrpk.mz","name":"合体吧块块","rpkId":577,"order":28,"iconUrl":"http://image.res.meizu.com/image/miniapp/f5d81d0c1ae24b41b29dbd83f4041ec1z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.ggjr","name":"广告接入测试1","rpkId":568,"order":29,"iconUrl":"http://image.res.meizu.com/image/miniapp/b745d897420441768230743255152ecez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"xbmzh5","name":"小宝当皇帝","rpkId":469,"order":30,"iconUrl":"http://image.res.meizu.com/image/miniapp/a4577bc31e8a4b85acc901e8506d198ez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.klt.game.dycxy.kyx.meizu","name":"大鱼吃小鱼经典版","rpkId":132,"order":31,"iconUrl":"http://image.res.meizu.com/image/miniapp/7677458c31f44074be377f95cefffadez","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.kyx.dldl.mz","name":"斗罗大陆","rpkId":496,"order":32,"iconUrl":"http://image.res.meizu.com/image/miniapp/5415f59f86a248efa27bedc83e8c2de5z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.qm.shendao","name":"神道","rpkId":503,"order":33,"iconUrl":"http://image.res.meizu.com/image/miniapp/edc61317dd2848309a0a403b7a4a179dz","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.zsb.cn","name":"优惠券测试（更新版本）","rpkId":470,"order":34,"iconUrl":"http://image.res.meizu.com/image/miniapp/37830591e4c2475fbda1cc4dba06c575z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.fx.myzg.kyx.mz","name":"命运战歌","rpkId":467,"order":35,"iconUrl":"http://image.res.meizu.com/image/miniapp/f8671dbfb4484bf18b555130a9f47594z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.webmobile","name":"开发调式版本","rpkId":464,"order":36,"iconUrl":"http://image.res.meizu.com/image/miniapp/8c41cbe7493d412981537e8926a9c3a6z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.meizu.ab","name":"就是想看看游戏名称过长客户端如何显示","rpkId":461,"order":37,"iconUrl":"http://image.res.meizu.com/image/miniapp/3fe7bd3e0d2448d18868b176aea43384z","playCount":0,"avatars":null,"simpleDesc":null,"simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null}]},{"id":15,"title":"区域标题_2","order":2,"key":30,"showName":1,"showMax":4,"content":[{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":1,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":"adsfadfasdfasdf","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":2,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":3,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":4,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":5,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":6,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":7,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":8,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":9,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":10,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":11,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"ceshi.sucai","name":"测试素材","rpkId":649,"order":12,"iconUrl":"http://image.res.meizu.com/image/miniapp/81bafd65a88b46d38076015b14ab0c9fz","playCount":0,"avatars":null,"simpleDesc":"asdasd","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null}]},{"id":16,"title":"区域标题","order":3,"key":190,"showName":1,"showMax":20,"content":[{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":1,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":2,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":3,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":4,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":5,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":6,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":7,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":8,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":9,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.grf.mhjx.mi","name":"剑侠伏魔录","rpkId":375,"order":10,"iconUrl":"http://image.res.meizu.com/image/miniapp/0844ea5da2ee47878080604266b0e19ez","playCount":0,"avatars":null,"simpleDesc":"剑侠伏魔录","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"ceshi.sucai","name":"测试素材","rpkId":649,"order":11,"iconUrl":"http://image.res.meizu.com/image/miniapp/81bafd65a88b46d38076015b14ab0c9fz","playCount":0,"avatars":null,"simpleDesc":"asdasd","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"huigui","name":"回归测试","rpkId":480,"order":12,"iconUrl":"http://image.res.meizu.com/image/miniapp/e2deab1573b14015a5565702abb05fb4z","playCount":0,"avatars":null,"simpleDesc":"一句话描述长","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":14,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":"adsfadfasdfasdf","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"demo-game.meizu.com","name":"demo-game","rpkId":640,"order":15,"iconUrl":"http://image.res.meizu.com/image/miniapp/95121fdb171e4f0db9da29e7d55d8cf0z","playCount":0,"avatars":null,"simpleDesc":"adsfadfasdfasdf","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.njtd.ycyxd.mz","name":"勇闯英雄岛","rpkId":579,"order":16,"iconUrl":"http://image.res.meizu.com/image/miniapp/bf3653d904a74166bc5636cff2e1c730z","playCount":0,"avatars":null,"simpleDesc":"测试广告0218","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xdkj.scq.kyx.mz","name":"生存球","rpkId":297,"order":17,"iconUrl":"http://image.res.meizu.com/image/miniapp/ec125c5e55b845699afdc61aab8b3114z","playCount":0,"avatars":null,"simpleDesc":"生存球来玩耍吧","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.xh.ybhz.meizu","name":"一笔画猪","rpkId":578,"order":18,"iconUrl":"http://image.res.meizu.com/image/miniapp/2b6b9f4a29de402f9702223ea4f8bac3z","playCount":0,"avatars":null,"simpleDesc":"推荐语(一句话描","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":19,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":"天下五绝之首12345","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":20,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":"天下五绝之首12345","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null},{"packageName":"com.tianxiawujue.kyx.meizu","name":"天下五绝","rpkId":306,"order":21,"iconUrl":"http://image.res.meizu.com/image/miniapp/97caaac5955f4935a4b3db82b8ae5756z","playCount":0,"avatars":null,"simpleDesc":"天下五绝之首12345","simpleDescShort":null,"bannerUrl":null,"imageColour":null,"ggUrl":null}]}]
+         */
+        private int id;
+        private String tabName;
+        private String tabIcon;
+        private int order;
+        private List<QuickSaasBean> blockList;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getTabName() {
+            return tabName;
+        }
+
+        public void setTabName(String tabName) {
+            this.tabName = tabName;
+        }
+
+        public String getTabIcon() {
+            return tabIcon;
+        }
+
+        public void setTabIcon(String tabIcon) {
+            this.tabIcon = tabIcon;
+        }
+
+        public int getOrder() {
+            return order;
+        }
+
+        public void setOrder(int order) {
+            this.order = order;
+        }
+
+        public List<QuickSaasBean> getBlockList() {
+            return blockList;
+        }
+
+        public void setBlockList(List<QuickSaasBean> blockList) {
+            this.blockList = blockList;
+        }
+
+
+
+        @Override
+        public String toString() {
+            return "TabListBean{" +
+                    "id=" + id +
+                    ", tabName='" + tabName + '\'' +
+                    ", tabIcon='" + tabIcon + '\'' +
+                    ", order=" + order +
+                    ", blockList=" + blockList +
+                    '}';
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(this.id);
+            dest.writeString(this.tabName);
+            dest.writeString(this.tabIcon);
+            dest.writeInt(this.order);
+            dest.writeTypedList(this.blockList);
+        }
+
+        public void readFromParcel(Parcel source) {
+            this.id = source.readInt();
+            this.tabName = source.readString();
+            this.tabIcon = source.readString();
+            this.order = source.readInt();
+            this.blockList = source.createTypedArrayList(QuickSaasBean.CREATOR);
+        }
+
+        public TabListBean() {
+        }
+
+        protected TabListBean(Parcel in) {
+            this.id = in.readInt();
+            this.tabName = in.readString();
+            this.tabIcon = in.readString();
+            this.order = in.readInt();
+            this.blockList = in.createTypedArrayList(QuickSaasBean.CREATOR);
+        }
+
+        public static final Creator<TabListBean> CREATOR = new Creator<TabListBean>() {
+            @Override
+            public TabListBean createFromParcel(Parcel source) {
+                return new TabListBean(source);
+            }
+
+            @Override
+            public TabListBean[] newArray(int size) {
+                return new TabListBean[size];
+            }
+        };
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "HomeTabBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", tabList=" + tabList +
+                '}';
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.name);
+        dest.writeInt(this.type);
+        dest.writeTypedList(this.tabList);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.id = source.readInt();
+        this.name = source.readString();
+        this.type = source.readInt();
+        this.tabList = source.createTypedArrayList(TabListBean.CREATOR);
+    }
+
+    public HomeTabBean() {
+    }
+
+    protected HomeTabBean(Parcel in) {
+        this.id = in.readInt();
+        this.name = in.readString();
+        this.type = in.readInt();
+        this.tabList = in.createTypedArrayList(TabListBean.CREATOR);
+    }
+
+    public static final Creator<HomeTabBean> CREATOR = new Creator<HomeTabBean>() {
+        @Override
+        public HomeTabBean createFromParcel(Parcel source) {
+            return new HomeTabBean(source);
+        }
+
+        @Override
+        public HomeTabBean[] newArray(int size) {
+            return new HomeTabBean[size];
+        }
+    };
+
+}
