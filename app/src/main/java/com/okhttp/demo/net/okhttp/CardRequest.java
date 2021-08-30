@@ -7,7 +7,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.okhttp.demo.models.BaseData;
 import com.okhttp.demo.utils.JsonUtil;
 import com.okhttp.demo.utils.LogUtility;
-import com.okhttp.demo.RomCacheHelper;
+import com.okhttp.demo.utils.RomCacheHelper;
 
 import java.io.IOException;
 

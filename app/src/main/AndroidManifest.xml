@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.okhttp.demo">
-
-    <!--必要权限-->
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!--可选权限-->
+    <!-- 必要权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 可选权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
 
     <application
@@ -20,13 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkHttpDemo">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.RxJavaActivity"></activity>
+        <activity android:name=".ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.NetActivity" />
     </application>
 
 </manifest>
