@@ -23,4 +23,10 @@ class HomeActivity : AppCompatActivity() {
             startActivity(this)
         }
     }
+
+    fun jumpToGlide(view: View) {
+        Intent(this, GlideActivity::class.java).run {
+            startActivity(this)
+        }
+    }
 }

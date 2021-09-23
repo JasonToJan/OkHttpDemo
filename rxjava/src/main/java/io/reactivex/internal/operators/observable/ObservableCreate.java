@@ -33,10 +33,17 @@ public final class ObservableCreate<T> extends Observable<T> {
 
     @Override
     protected void subscribeActual(Observer<? super T> observer) {
+        // 1. 创建1个CreateEmitter对象（封装成1个Disposable对象）
+        // 作用：发射事件
         CreateEmitter<T> parent = new CreateEmitter<T>(observer);
+        // 2. 调用观察者（Observer）的onSubscribe（）
+        // onSubscribe（）的实现 = 使用步骤2（创建观察者（Observer））时复写的onSubscribe(）
         observer.onSubscribe(parent);
 
         try {
+            // 3. 调用source对象的subscribe（）
+            // source对象 = 使用步骤1（创建被观察者（Observable））中创建的ObservableOnSubscribe对象
+            // subscribe（）的实现 = 使用步骤1（创建被观察者（Observable））中复写的subscribe（）->>分析2
             source.subscribe(parent);
         } catch (Throwable ex) {
             Exceptions.throwIfFatal(ex);
@@ -44,6 +51,11 @@ public final class ObservableCreate<T> extends Observable<T> {
         }
     }
 
+    /**
+     * 分析2：emitter.onNext("1");
+     * 此处仅讲解subscribe（）实现中的onNext（）
+     * onError（）、onComplete()类似，此处不作过多描述
+     **/
     static final class CreateEmitter<T>
     extends AtomicReference<Disposable>
     implements ObservableEmitter<T>, Disposable {
@@ -58,15 +70,20 @@ public final class ObservableCreate<T> extends Observable<T> {
 
         @Override
         public void onNext(T t) {
+            // 注：发送的事件不可为空
             if (t == null) {
                 onError(new NullPointerException("onNext called with null. Null values are generally not allowed in 2.x operators and sources."));
                 return;
             }
+            // 若无断开连接（调用Disposable.dispose()），则调用观察者（Observer）的同名方法 = onNext（）
+            // 观察者的onNext（）的内容 = 使用步骤2中复写内容
             if (!isDisposed()) {
                 observer.onNext(t);
             }
         }
 
+        // onError（）、onComplete()类似，此处不作过多描述
+        // 特别说明：调用该2方法，最终都会自动调用dispose()，即断开观察者 & 被观察者的连接
         @Override
         public void onError(Throwable t) {
             if (!tryOnError(t)) {

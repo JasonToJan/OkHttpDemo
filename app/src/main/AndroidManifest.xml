@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OkHttpDemo">
-        <activity android:name=".ui.RxJavaActivity"></activity>
+        <activity android:name=".ui.GlideActivity"></activity>
+        <activity android:name=".ui.RxJavaActivity" />
         <activity android:name=".ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

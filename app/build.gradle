@@ -51,4 +51,5 @@ dependencies {
     implementation project(":retrofit")
     implementation project(':rxjava')
     implementation project(":rxandroid")
+    implementation project(":glideAll:glide")
 }

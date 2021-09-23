@@ -12,6 +12,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/deviceid" />
+            <option value="$PROJECT_DIR$/glideAll" />
+            <option value="$PROJECT_DIR$/glideAll/disklrucache" />
+            <option value="$PROJECT_DIR$/glideAll/gif_decoder" />
+            <option value="$PROJECT_DIR$/glideAll/gif_encoder" />
+            <option value="$PROJECT_DIR$/glideAll/glide" />
             <option value="$PROJECT_DIR$/okhttp3" />
             <option value="$PROJECT_DIR$/retrofit" />
             <option value="$PROJECT_DIR$/rxandroid" />

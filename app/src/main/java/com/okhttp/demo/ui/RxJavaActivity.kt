@@ -15,6 +15,6 @@ class RxJavaActivity : AppCompatActivity() {
     }
 
     private fun testRxJava() {
-        RxJavaUtils.makeDispose()
+        RxJavaUtils.makeMultiObservable()
     }
 }
