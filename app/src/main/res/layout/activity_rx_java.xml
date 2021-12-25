@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="RxJava测试"
+        android:onClick="finishTv"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"

@@ -17,15 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OkHttpDemo">
         <activity android:name=".ui.GlideActivity"></activity>
-        <activity android:name=".ui.RxJavaActivity" />
-        <activity android:name=".ui.HomeActivity">
+        <activity android:name=".ui.HomeActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.NetActivity" />
+        <activity android:name=".ui.RxJavaActivity"
+            android:launchMode="singleTask"
+            />
+        <activity android:name=".ui.NetActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity=":NetActivityTask"
+            android:process=":NetActivityTask"
+            />
     </application>
 
 </manifest>

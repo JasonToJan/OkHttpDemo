@@ -1,7 +1,10 @@
 package com.okhttp.demo.ui
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.okhttp.demo.R
 import com.okhttp.demo.models.BaseData
@@ -16,28 +19,44 @@ import retrofit2.Response
 
 class NetActivity : AppCompatActivity() {
 
+    private val TAG = "HomeActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_net)
     }
 
     fun executeOkhttp(view: View) {
-        RequestManager.getInstance().requestHomeData("yPViQAfC", true, object : INet<HomeTabBean> {
-            override fun onPrepare() {
-                am_request_status_tv.text = "正在请求网络..."
-            }
+//        RequestManager.getInstance().requestHomeData("yPViQAfC", true, object : INet<HomeTabBean> {
+//            override fun onPrepare() {
+//                am_request_status_tv.text = "正在请求网络..."
+//            }
+//
+//            override fun onSuccess(result: HomeTabBean?, msg: String?) {
+//                am_request_status_tv.text = "请求成功！"
+//
+//                am_request_result_tv.text = msg
+//            }
+//
+//            override fun onFailure(msg: String?) {
+//                am_request_status_tv.text = "请求失败！！原因：$msg"
+//            }
+//
+//        })
 
-            override fun onSuccess(result: HomeTabBean?, msg: String?) {
-                am_request_status_tv.text = "请求成功！"
+//        Intent(this, RxJavaActivity::class.java).run {
+//            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//            startActivity(this)
+//        }
 
-                am_request_result_tv.text = msg
-            }
-
-            override fun onFailure(msg: String?) {
-                am_request_status_tv.text = "请求失败！！原因：$msg"
-            }
-
-        })
+        try {
+            val uri = Uri.parse("upgame://rrspvip" + "?id=8")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        } catch (e: Throwable) {
+            Log.e(TAG, "jumpToVipActivePage error=" + e.message)
+        }
     }
 
     fun executeRetrofit(view: View) {

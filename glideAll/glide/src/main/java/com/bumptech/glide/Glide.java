@@ -111,29 +111,29 @@ import java.util.Set;
  * RequestBuilder} and maintaining an {@link Engine}, {@link BitmapPool}, {@link
  * com.bumptech.glide.load.engine.cache.DiskCache} and {@link MemoryCache}.
  */
-public class Glide implements ComponentCallbacks2 {
+public class Glide implements ComponentCallbacks2 {//ComponentCallback2是一个细粒度的内存回收管理回调，响应低内存回调
   private static final String DEFAULT_DISK_CACHE_DIR = "image_manager_disk_cache";
   private static final String TAG = "Glide";
 
-  @GuardedBy("Glide.class")
+  @GuardedBy("Glide.class")//这个注解是一个同步锁，只有线程持有glide对象锁时，才能使用这写变量
   private static volatile Glide glide;
 
-  private static volatile boolean isInitializing;
+  private static volatile boolean isInitializing;//是否初始化
 
-  private final Engine engine;
-  private final BitmapPool bitmapPool;
-  private final MemoryCache memoryCache;
-  private final GlideContext glideContext;
-  private final Registry registry;
-  private final ArrayPool arrayPool;
-  private final RequestManagerRetriever requestManagerRetriever;
-  private final ConnectivityMonitorFactory connectivityMonitorFactory;
+  private final Engine engine;//加载引擎
+  private final BitmapPool bitmapPool;//图片回收池
+  private final MemoryCache memoryCache;//内存缓存
+  private final GlideContext glideContext;//上下文对象
+  private final Registry registry;//注册表
+  private final ArrayPool arrayPool;//图片缓存相关变量
+  private final RequestManagerRetriever requestManagerRetriever;//请求管理器检索器
+  private final ConnectivityMonitorFactory connectivityMonitorFactory;//连接监视器工厂
 
   @GuardedBy("managers")
-  private final List<RequestManager> managers = new ArrayList<>();
+  private final List<RequestManager> managers = new ArrayList<>();//请求管理器集合
 
-  private final RequestOptionsFactory defaultRequestOptionsFactory;
-  private MemoryCategory memoryCategory = MemoryCategory.NORMAL;
+  private final RequestOptionsFactory defaultRequestOptionsFactory;//请求选项工厂
+  private MemoryCategory memoryCategory = MemoryCategory.NORMAL;//内存类别
 
   @GuardedBy("this")
   @Nullable
@@ -274,12 +274,15 @@ public class Glide implements ComponentCallbacks2 {
       @NonNull Context context,
       @NonNull GlideBuilder builder,
       @Nullable GeneratedAppGlideModule annotationGeneratedModule) {
+
     Context applicationContext = context.getApplicationContext();
     List<com.bumptech.glide.module.GlideModule> manifestModules = Collections.emptyList();
     if (annotationGeneratedModule == null || annotationGeneratedModule.isManifestParsingEnabled()) {
+      //解析Manifest中的配置信息的一个类
       manifestModules = new ManifestParser(applicationContext).parse();
     }
 
+    //移除掉Manifest中配置Modules
     if (annotationGeneratedModule != null
         && !annotationGeneratedModule.getExcludedModuleClasses().isEmpty()) {
       Set<Class<?>> excludedModuleClasses = annotationGeneratedModule.getExcludedModuleClasses();
@@ -302,18 +305,25 @@ public class Glide implements ComponentCallbacks2 {
       }
     }
 
+    //通过注解生成的Module来生产一个请求管理器的工厂类
     RequestManagerRetriever.RequestManagerFactory factory =
         annotationGeneratedModule != null
             ? annotationGeneratedModule.getRequestManagerFactory()
             : null;
     builder.setRequestManagerFactory(factory);
+
+    //将此工厂分配给所有Modules
     for (com.bumptech.glide.module.GlideModule module : manifestModules) {
       module.applyOptions(applicationContext, builder);
     }
     if (annotationGeneratedModule != null) {
       annotationGeneratedModule.applyOptions(applicationContext, builder);
     }
+
+    //通过Builder.build方法生产Glide
     Glide glide = builder.build(applicationContext);
+
+    //给每个Module注册Registry
     for (com.bumptech.glide.module.GlideModule module : manifestModules) {
       try {
         module.registerComponents(applicationContext, glide, glide.registry);
@@ -330,7 +340,11 @@ public class Glide implements ComponentCallbacks2 {
     if (annotationGeneratedModule != null) {
       annotationGeneratedModule.registerComponents(applicationContext, glide, glide.registry);
     }
+
+    //设置ComponentCallback回调
     applicationContext.registerComponentCallbacks(glide);
+
+    //静态全局使用的Glide
     Glide.glide = glide;
   }
 
@@ -341,7 +355,7 @@ public class Glide implements ComponentCallbacks2 {
     try {
       Class<GeneratedAppGlideModule> clazz =
           (Class<GeneratedAppGlideModule>)
-              Class.forName("com.bumptech.glide.GeneratedAppGlideModuleImpl");
+              Class.forName("com.bumptech.glide.GeneratedAppGlideModuleImpl");//反射获取
       result =
           clazz.getDeclaredConstructor(Context.class).newInstance(context.getApplicationContext());
     } catch (ClassNotFoundException e) {

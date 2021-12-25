@@ -1,12 +1,16 @@
 package com.okhttp.demo.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.okhttp.demo.R
 
 class HomeActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -14,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
 
     fun jumpToNet(view: View) {
         Intent(this, NetActivity::class.java).run {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(this)
         }
     }

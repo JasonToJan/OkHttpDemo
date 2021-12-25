@@ -2,6 +2,7 @@ package com.okhttp.demo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.okhttp.demo.R
 import com.okhttp.demo.utils.RxJavaUtils
 import io.reactivex.Observable
@@ -16,5 +17,9 @@ class RxJavaActivity : AppCompatActivity() {
 
     private fun testRxJava() {
         RxJavaUtils.makeMultiObservable()
+    }
+
+    fun finishTv(view: View) {
+        finish()
     }
 }

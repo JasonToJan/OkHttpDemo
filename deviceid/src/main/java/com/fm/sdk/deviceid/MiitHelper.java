@@ -79,7 +79,12 @@ public class MiitHelper implements IIdentifierListener {
     }
 
     private int CallFromReflect(Context context) {
-        return MdidSdkHelper.InitSdk(context, true, this);
+        try {
+            return MdidSdkHelper.InitSdk(context, true, this);
+        } catch (Exception var3) {
+            Log.e("Saas##MittHelper", "initmdid error="+ var3.toString());
+            return 1008615;
+        }
     }
 
     public void OnSupport(boolean isSupport, IdSupplier _supplier) {
