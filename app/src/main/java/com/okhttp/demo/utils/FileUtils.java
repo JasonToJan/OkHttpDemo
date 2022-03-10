@@ -24,7 +24,7 @@ import java.util.List;
  **/
 public class FileUtils {
 
-    private static String FILE_TEST = "E:\\test.txt";
+    private static String FILE_TEST = "/Users/wangjianan/Documents/res/test/test.txt";
     private static String FILE_CHARSET = "utf-8";
     private static final String TAG = "FileUtils";
 
@@ -33,11 +33,11 @@ public class FileUtils {
     public static void main(String[] args) {
 
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, 2021);
+        cal.set(Calendar.YEAR, 2022);
 
         List<String> list = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        for (int i = 11; i >= 7; i--) {
+        for (int i = 1; i <= 4; i++) {
 
             cal.set(Calendar.MONTH, i);
             //这个月第一天
@@ -58,9 +58,6 @@ public class FileUtils {
                 if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                     continue;
                 }
-
-                if (i == 11 && j == 31) continue;//最后一天算了
-
 
                 //判断下一天是否是周末
                 cal.add(Calendar.DATE, 1);
@@ -88,7 +85,7 @@ public class FileUtils {
 //                System.out.println("next2Day=" + next2Day);
 
                 Calendar cal2 = Calendar.getInstance();
-                cal2.set(Calendar.YEAR, 2021);
+                cal2.set(Calendar.YEAR, 2022);
                 cal2.set(Calendar.MONTH, i);
                 cal2.set(Calendar.DATE, j);
 
@@ -129,6 +126,102 @@ public class FileUtils {
                 }
                 System.out.println("last3Day=" + last3Day);
 
+                cal2.add(Calendar.DATE, -1);
+                String last4Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last4Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last4Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last4Day=" + last4Day);
+
+                cal2.add(Calendar.DATE, -1);
+                String last5Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last5Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last5Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last5Day=" + last5Day);
+
+                cal2.add(Calendar.DATE, -1);
+                String last6Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last6Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last6Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last6Day=" + last6Day);
+
+                cal2.add(Calendar.DATE, -1);
+                String last7Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last7Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last7Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last7Day=" + last7Day);
+
+                cal2.add(Calendar.DATE, -1);
+                String last8Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last8Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last8Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last8Day=" + last8Day);
+
+                cal2.add(Calendar.DATE, -1);
+                String last9Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last9Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last9Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last9Day=" + last9Day);
+
+                cal2.add(Calendar.DATE, -1);
+                String last10Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last10Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last10Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last10Day=" + last10Day);
+
+                cal2.add(Calendar.DATE, -1);
+                String last11Day = sdf.format(cal2.getTime());
+                if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                    cal2.add(Calendar.DATE, -1);
+                    last11Day = sdf.format(cal2.getTime());
+                    if (cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal2.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+                        cal2.add(Calendar.DATE, -1);
+                        last11Day = sdf.format(cal2.getTime());
+                    }
+                }
+                System.out.println("last11Day=" + last11Day);
+
 
 //
 //                //3天前
@@ -144,27 +237,45 @@ public class FileUtils {
 //                }
 
                 //非st 非科创 非创业
-                //0个交易日前创新高
-                // 0个交易日前收盘价大于0个交易日前开盘价
-                // 0个交易日前涨幅大于1.5
-                // 0个交易日前成交额大于3亿
-                // 0个交易日前成交量大于1个交易日前成交量的0.95倍
-                // 0个交易日前成交量小于1个交易日前成交量的2倍
-                // 1个交易日前涨幅大于-1.5
-                // 1个交易日前最高价大于2个交易日前最高价
-                // 2个交易日前涨幅大于-1.5
-                // 2个交易日前最高价大于3个交易日前最高价
+                // 今天9点16分分时涨幅大于9.5
+                // 今天9点30分分时涨跌幅小于8
+                // 今天9点30分分时涨跌幅大于0
+                // 今天9点31分分时涨跌幅-今天9点30分分时涨跌幅大于-0.5
+                // 昨天成交额大于3亿
+                // 昨天涨停
+                // 昨天成交额大于前天成交额的1.5倍
+                // 2个交易日前未涨停
+                // 3个交易日前未涨停
+                // 4个交易日前未涨停
+                // 5个交易日前未涨停
+                // 6个交易日前未涨停
+                // 7个交易日前未涨停
+                // 8个交易日前未涨停
+                // 9个交易日前未涨停
+                // 10个交易日前未涨停
+                // 11个交易日前未涨停
+
                 sb.setLength(0);
                 sb.append("\n\n");
                 sb.append("非st 非科创 非创业 ");
-                sb.append("(").append(targetDay).append("开盘价-").append(lastDay).append("收盘价)/").append(lastDay).append("收盘价)>1% ");
-                sb.append("(").append(targetDay).append("收盘价-").append(targetDay).append("开盘价)/").append(targetDay).append("开盘价)>1% ");
-                sb.append("(").append(targetDay).append("最低价-").append(lastDay).append("收盘价)/").append(lastDay).append("收盘价)>-1% ");
-                sb.append(lastDay).append("成交额大于1.5亿 ").append(targetDay).append("成交额大于3亿 ").append(targetDay).append("成交额小于40亿 ");
-                sb.append(targetDay).append("成交量小于").append(lastDay).append("成交量的3倍 ");
-                sb.append(lastDay).append("涨幅大于-2.2%小于5% ");
-                sb.append(last3Day).append("没有涨停 ");
-                sb.append(targetDay).append("涨停被砸或涨停 ").append(targetDay).append("涨幅大于5% ");
+                sb.append(targetDay).append("9点16分分时涨幅大于9.5 ");
+                sb.append(targetDay).append("今天9点30分分时涨跌幅小于8 ");
+                sb.append(targetDay).append("9点30分分时涨跌幅大于0 ");
+                sb.append(targetDay).append("9点31分分时涨跌幅-").append(targetDay).append("9点30分分时涨跌幅大于-0.5 ");
+                sb.append(lastDay).append("成交额大于3亿 ");
+                sb.append(lastDay).append("涨幅大于7 ");
+                sb.append(lastDay).append("成交额大于").append(last2Day).append("成交额的1.5倍 ");
+                sb.append(last2Day).append("未涨停 ");
+                sb.append(last3Day).append("未涨停 ");
+                sb.append(last4Day).append("未涨停 ");
+                sb.append(last5Day).append("未涨停 ");
+                sb.append(last6Day).append("未涨停 ");
+                sb.append(last7Day).append("未涨停 ");
+                sb.append(last8Day).append("未涨停 ");
+                sb.append(last9Day).append("未涨停 ");
+                sb.append(last10Day).append("未涨停 ");
+                sb.append(last11Day).append("未涨停 ");
+
 
 //                sb.append(lastDay).append("非涨停 ");
 //                sb.append(nextDay).append("跌幅大于1 ");
