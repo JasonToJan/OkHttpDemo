@@ -2,12 +2,16 @@ package com.okhttp.demo.utils;
 
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,7 +32,19 @@ public class FileUtils {
     private static String FILE_CHARSET = "utf-8";
     private static final String TAG = "FileUtils";
 
-    public static SimpleDateFormat sdf = new SimpleDateFormat("M月d日");
+    public static final String HOLIDAY1 = "2022年2月4日";
+    public static final String HOLIDAY2 = "2022年1月3日";
+    public static final String HOLIDAY3 = "2021年10月7日";
+    public static final String HOLIDAY4 = "2021年9月21日";
+    public static final String HOLIDAY5 = "2022年4月5日";
+    public static final String HOLIDAY6 = "2022年5月4日";
+    public static final String HOLIDAY7 = "2022年6月3日";
+    /**
+     * 2月4日时间戳
+     */
+    public static final long TWO_FOUR = 1643971435894L;
+
+    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日");
 
     public static void main(String[] args) {
 
@@ -37,8 +53,9 @@ public class FileUtils {
 
         List<String> list = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 8; i >= 0; i--) {
 
+            cal.set(Calendar.YEAR, 2022);
             cal.set(Calendar.MONTH, i);
             //这个月第一天
             int firstDay = cal.getActualMinimum(Calendar.DAY_OF_MONTH);
@@ -48,6 +65,11 @@ public class FileUtils {
             System.out.println("firstDay=" + firstDay + " endDay=" + endDay);
 
             for (int j = endDay; j >= firstDay; j--) {
+
+                if (j == 31 && i == 11) {
+                    continue;
+                }
+
                 cal.set(Calendar.MONTH, i);
                 cal.set(Calendar.DATE, j);
                 String targetDay = sdf.format(cal.getTime());
@@ -100,6 +122,34 @@ public class FileUtils {
                         lastDay = sdf.format(cal2.getTime());
                     }
                 }
+                if (lastDay.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    lastDay = sdf.format(cal2.getTime());
+                }
+                if (lastDay.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    lastDay = sdf.format(cal2.getTime());
+                }
+                if (lastDay.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    lastDay = sdf.format(cal2.getTime());
+                }
+                if (lastDay.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    lastDay = sdf.format(cal2.getTime());
+                }
+                if (lastDay.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    lastDay = sdf.format(cal2.getTime());
+                }
+                if (lastDay.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    lastDay = sdf.format(cal2.getTime());
+                }
+                if (lastDay.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    lastDay = sdf.format(cal2.getTime());
+                }
                 System.out.println("lastDay=" + lastDay);
 
                 cal2.add(Calendar.DATE, -1);
@@ -111,6 +161,34 @@ public class FileUtils {
                         cal2.add(Calendar.DATE, -1);
                         last2Day = sdf.format(cal2.getTime());
                     }
+                }
+                if (last2Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last2Day = sdf.format(cal2.getTime());
+                }
+                if (last2Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last2Day = sdf.format(cal2.getTime());
+                }
+                if (last2Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last2Day = sdf.format(cal2.getTime());
+                }
+                if (last2Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last2Day = sdf.format(cal2.getTime());
+                }
+                if (last2Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last2Day = sdf.format(cal2.getTime());
+                }
+                if (last2Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last2Day = sdf.format(cal2.getTime());
+                }
+                if (last2Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last2Day = sdf.format(cal2.getTime());
                 }
                 System.out.println("last2Day=" + last2Day);
 
@@ -124,6 +202,34 @@ public class FileUtils {
                         last3Day = sdf.format(cal2.getTime());
                     }
                 }
+                if (last3Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last3Day = sdf.format(cal2.getTime());
+                }
+                if (last3Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last3Day = sdf.format(cal2.getTime());
+                }
+                if (last3Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last3Day = sdf.format(cal2.getTime());
+                }
+                if (last3Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last3Day = sdf.format(cal2.getTime());
+                }
+                if (last3Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last3Day = sdf.format(cal2.getTime());
+                }
+                if (last3Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last3Day = sdf.format(cal2.getTime());
+                }
+                if (last3Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last3Day = sdf.format(cal2.getTime());
+                }
                 System.out.println("last3Day=" + last3Day);
 
                 cal2.add(Calendar.DATE, -1);
@@ -135,6 +241,34 @@ public class FileUtils {
                         cal2.add(Calendar.DATE, -1);
                         last4Day = sdf.format(cal2.getTime());
                     }
+                }
+                if (last4Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last4Day = sdf.format(cal2.getTime());
+                }
+                if (last4Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last4Day = sdf.format(cal2.getTime());
+                }
+                if (last4Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last4Day = sdf.format(cal2.getTime());
+                }
+                if (last4Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last4Day = sdf.format(cal2.getTime());
+                }
+                if (last4Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last4Day = sdf.format(cal2.getTime());
+                }
+                if (last4Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last4Day = sdf.format(cal2.getTime());
+                }
+                if (last4Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last4Day = sdf.format(cal2.getTime());
                 }
                 System.out.println("last4Day=" + last4Day);
 
@@ -148,6 +282,34 @@ public class FileUtils {
                         last5Day = sdf.format(cal2.getTime());
                     }
                 }
+                if (last5Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last5Day = sdf.format(cal2.getTime());
+                }
+                if (last5Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last5Day = sdf.format(cal2.getTime());
+                }
+                if (last5Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last5Day = sdf.format(cal2.getTime());
+                }
+                if (last5Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last5Day = sdf.format(cal2.getTime());
+                }
+                if (last5Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last5Day = sdf.format(cal2.getTime());
+                }
+                if (last5Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last5Day = sdf.format(cal2.getTime());
+                }
+                if (last5Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last5Day = sdf.format(cal2.getTime());
+                }
                 System.out.println("last5Day=" + last5Day);
 
                 cal2.add(Calendar.DATE, -1);
@@ -159,6 +321,34 @@ public class FileUtils {
                         cal2.add(Calendar.DATE, -1);
                         last6Day = sdf.format(cal2.getTime());
                     }
+                }
+                if (last6Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last6Day = sdf.format(cal2.getTime());
+                }
+                if (last6Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last6Day = sdf.format(cal2.getTime());
+                }
+                if (last6Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last6Day = sdf.format(cal2.getTime());
+                }
+                if (last6Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last6Day = sdf.format(cal2.getTime());
+                }
+                if (last6Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last6Day = sdf.format(cal2.getTime());
+                }
+                if (last6Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last6Day = sdf.format(cal2.getTime());
+                }
+                if (last6Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last6Day = sdf.format(cal2.getTime());
                 }
                 System.out.println("last6Day=" + last6Day);
 
@@ -172,6 +362,34 @@ public class FileUtils {
                         last7Day = sdf.format(cal2.getTime());
                     }
                 }
+                if (last7Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last7Day = sdf.format(cal2.getTime());
+                }
+                if (last7Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last7Day = sdf.format(cal2.getTime());
+                }
+                if (last7Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last7Day = sdf.format(cal2.getTime());
+                }
+                if (last7Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last7Day = sdf.format(cal2.getTime());
+                }
+                if (last7Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last7Day = sdf.format(cal2.getTime());
+                }
+                if (last7Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last7Day = sdf.format(cal2.getTime());
+                }
+                if (last7Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last7Day = sdf.format(cal2.getTime());
+                }
                 System.out.println("last7Day=" + last7Day);
 
                 cal2.add(Calendar.DATE, -1);
@@ -183,6 +401,34 @@ public class FileUtils {
                         cal2.add(Calendar.DATE, -1);
                         last8Day = sdf.format(cal2.getTime());
                     }
+                }
+                if (last8Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last8Day = sdf.format(cal2.getTime());
+                }
+                if (last8Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last8Day = sdf.format(cal2.getTime());
+                }
+                if (last8Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last8Day = sdf.format(cal2.getTime());
+                }
+                if (last8Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last8Day = sdf.format(cal2.getTime());
+                }
+                if (last8Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last8Day = sdf.format(cal2.getTime());
+                }
+                if (last8Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last8Day = sdf.format(cal2.getTime());
+                }
+                if (last8Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last8Day = sdf.format(cal2.getTime());
                 }
                 System.out.println("last8Day=" + last8Day);
 
@@ -196,6 +442,34 @@ public class FileUtils {
                         last9Day = sdf.format(cal2.getTime());
                     }
                 }
+                if (last9Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last9Day = sdf.format(cal2.getTime());
+                }
+                if (last9Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last9Day = sdf.format(cal2.getTime());
+                }
+                if (last9Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last9Day = sdf.format(cal2.getTime());
+                }
+                if (last9Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last9Day = sdf.format(cal2.getTime());
+                }
+                if (last9Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last9Day = sdf.format(cal2.getTime());
+                }
+                if (last9Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last9Day = sdf.format(cal2.getTime());
+                }
+                if (last9Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last9Day = sdf.format(cal2.getTime());
+                }
                 System.out.println("last9Day=" + last9Day);
 
                 cal2.add(Calendar.DATE, -1);
@@ -207,6 +481,34 @@ public class FileUtils {
                         cal2.add(Calendar.DATE, -1);
                         last10Day = sdf.format(cal2.getTime());
                     }
+                }
+                if (last10Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last10Day = sdf.format(cal2.getTime());
+                }
+                if (last10Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last10Day = sdf.format(cal2.getTime());
+                }
+                if (last10Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last10Day = sdf.format(cal2.getTime());
+                }
+                if (last10Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last10Day = sdf.format(cal2.getTime());
+                }
+                if (last10Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last10Day = sdf.format(cal2.getTime());
+                }
+                if (last10Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last10Day = sdf.format(cal2.getTime());
+                }
+                if (last10Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last10Day = sdf.format(cal2.getTime());
                 }
                 System.out.println("last10Day=" + last10Day);
 
@@ -220,8 +522,35 @@ public class FileUtils {
                         last11Day = sdf.format(cal2.getTime());
                     }
                 }
+                if (last11Day.equals(HOLIDAY1)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last11Day = sdf.format(cal2.getTime());
+                }
+                if (last11Day.equals(HOLIDAY2)) {
+                    cal2.add(Calendar.DATE, -3);
+                    last11Day = sdf.format(cal2.getTime());
+                }
+                if (last11Day.equals(HOLIDAY3)) {
+                    cal2.add(Calendar.DATE, -7);
+                    last11Day = sdf.format(cal2.getTime());
+                }
+                if (last11Day.equals(HOLIDAY4)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last11Day = sdf.format(cal2.getTime());
+                }
+                if (last11Day.equals(HOLIDAY5)) {
+                    cal2.add(Calendar.DATE, -4);
+                    last11Day = sdf.format(cal2.getTime());
+                }
+                if (last11Day.equals(HOLIDAY6)) {
+                    cal2.add(Calendar.DATE, -5);
+                    last11Day = sdf.format(cal2.getTime());
+                }
+                if (last11Day.equals(HOLIDAY7)) {
+                    cal2.add(Calendar.DATE, -1);
+                    last11Day = sdf.format(cal2.getTime());
+                }
                 System.out.println("last11Day=" + last11Day);
-
 
 //
 //                //3天前
@@ -258,23 +587,34 @@ public class FileUtils {
                 sb.setLength(0);
                 sb.append("\n\n");
                 sb.append("非st 非科创 非创业 ");
-                sb.append(targetDay).append("9点16分分时涨幅大于9.5 ");
-                sb.append(targetDay).append("今天9点30分分时涨跌幅小于8 ");
-                sb.append(targetDay).append("9点30分分时涨跌幅大于0 ");
-                sb.append(targetDay).append("9点31分分时涨跌幅-").append(targetDay).append("9点30分分时涨跌幅大于-0.5 ");
-                sb.append(lastDay).append("成交额大于3亿 ");
-                sb.append(lastDay).append("涨幅大于7 ");
-                sb.append(lastDay).append("成交额大于").append(last2Day).append("成交额的1.5倍 ");
-                sb.append(last2Day).append("未涨停 ");
-                sb.append(last3Day).append("未涨停 ");
-                sb.append(last4Day).append("未涨停 ");
-                sb.append(last5Day).append("未涨停 ");
+
+
+                //选出强势的
+                //sb.append(targetDay).append("9点15分分时涨幅大于9 ");
+                //sb.append(targetDay).append("9点19分分时涨幅大于5.3 ");
+                //竞价在可盈利区间
+                //sb.append(targetDay).append("9点25分分时涨跌幅大于-0.3小于5.1 ");
+                //开盘没有被砸太猛
+                //sb.append(targetDay).append("9点31分分时涨跌幅-").append(targetDay).append("9点30分分时涨跌幅大于-1.5 ");
+                //有人玩的
+                sb.append(lastDay).append("成交额大于1.5亿 ");
+                sb.append(lastDay).append("涨停或涨停被砸 ");
+                //有新入资金
+                sb.append(lastDay).append("成交额大于").append(last2Day).append("成交额的1.25倍 ");
+                //前面盈利空间不能太大
+                sb.append("(").append(last2Day).append("收盘价-").append(last4Day).append("收盘价)/").append(last4Day).append("收盘价<4.6% ");
+
+                sb.append(last2Day).append("的最大涨幅小于9.9 ");
+                sb.append(last3Day).append("的最大涨幅小于9.9 ");
+                sb.append(last4Day).append("的最大涨幅小于9.9 ");
+                sb.append(last5Day).append("的最大涨幅小于9.9 ");
                 sb.append(last6Day).append("未涨停 ");
                 sb.append(last7Day).append("未涨停 ");
                 sb.append(last8Day).append("未涨停 ");
                 sb.append(last9Day).append("未涨停 ");
                 sb.append(last10Day).append("未涨停 ");
                 sb.append(last11Day).append("未涨停 ");
+
 
 
 //                sb.append(lastDay).append("非涨停 ");
@@ -307,6 +647,15 @@ public class FileUtils {
         //参数校验
         if (!destPath.endsWith(".txt")) {
             return null;
+        }
+
+        //存在先删除
+        try {
+            Path path = Paths.get(destPath);
+            boolean result = Files.deleteIfExists(path);
+            System.out.println("是否删除成功："+result);
+        } catch (Exception e) {
+
         }
 
         File txtFile = new File(destPath);//txt文件
