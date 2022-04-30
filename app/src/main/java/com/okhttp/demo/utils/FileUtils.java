@@ -2,6 +2,7 @@ package com.okhttp.demo.utils;
 
 
 import android.text.TextUtils;
+import android.util.ArrayMap;
 import android.util.Log;
 
 import java.io.File;
@@ -15,7 +16,9 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * desc:
@@ -39,23 +42,55 @@ public class FileUtils {
     public static final String HOLIDAY5 = "2022年4月5日";
     public static final String HOLIDAY6 = "2022年5月4日";
     public static final String HOLIDAY7 = "2022年6月3日";
+
     /**
-     * 2月4日时间戳
+     * Key存放日期，Value存放需要减去的日期天数，因为放假，不会交易
      */
-    public static final long TWO_FOUR = 1643971435894L;
+    public static final Map<String, Integer> HOLIDAY_MAP = new HashMap<>();
+
+    static {
+        HOLIDAY_MAP.put("2021年2月17日", -7);
+        HOLIDAY_MAP.put("2021年4月5日", -3);
+        HOLIDAY_MAP.put("2021年5月5日", -5);
+        HOLIDAY_MAP.put("2021年6月14日", -3);
+        HOLIDAY_MAP.put("2021年9月21日", -4);
+        HOLIDAY_MAP.put("2021年10月7日", -7);
+        HOLIDAY_MAP.put("2022年1月3日", -3);
+        HOLIDAY_MAP.put("2022年2月4日", -7);
+        HOLIDAY_MAP.put("2022年4月5日", -4);
+        HOLIDAY_MAP.put("2022年5月4日", -5);
+        HOLIDAY_MAP.put("2022年6月3日", -1);
+        HOLIDAY_MAP.put("2022年9月12日", -3);
+        HOLIDAY_MAP.put("2022年10月7日", -7);
+    }
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日");
+
+    //---------------------------设置下面几个参数就可以了----------------------------------------------//
+    /**
+     * 当前年份
+     */
+    public static final int CURRENT_YEAR = 2022;
+    /**
+     * 想要开始的月份
+     */
+    public static final int BEGIN_MONTH = 1;
+    /**
+     * 想要结束的月份
+     */
+    public static final int MONTH_END = 2;
+    //---------------------------设置上面几个参数就可以了----------------------------------------------//
 
     public static void main(String[] args) {
 
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, 2022);
+        cal.set(Calendar.YEAR, CURRENT_YEAR);
 
         List<String> list = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        for (int i = 8; i >= 0; i--) {
+        for (int i = MONTH_END - 1; i >= BEGIN_MONTH - 1; i--) {
 
-            cal.set(Calendar.YEAR, 2022);
+            cal.set(Calendar.YEAR, CURRENT_YEAR);
             cal.set(Calendar.MONTH, i);
             //这个月第一天
             int firstDay = cal.getActualMinimum(Calendar.DAY_OF_MONTH);
@@ -64,35 +99,46 @@ public class FileUtils {
 
             System.out.println("firstDay=" + firstDay + " endDay=" + endDay);
 
+            firstTag:
             for (int j = endDay; j >= firstDay; j--) {
 
+                //最后一天好像是有问题的
                 if (j == 31 && i == 11) {
                     continue;
                 }
 
+                cal.set(Calendar.YEAR, CURRENT_YEAR);
                 cal.set(Calendar.MONTH, i);
                 cal.set(Calendar.DATE, j);
                 String targetDay = sdf.format(cal.getTime());
 
                 System.out.println("targetDay=" + targetDay);
 
+                //判断上一个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (targetDay.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        //这里过滤循环
+                        cal.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        int lastTradeYear = cal.get(Calendar.YEAR);
+                        int lastTradeMonth = cal.get(Calendar.MONTH);
+                        int lastTradeDay = cal.get(Calendar.DATE);
+                        if (lastTradeYear == CURRENT_YEAR) {
+                            i = lastTradeMonth;
+                            j = lastTradeDay + 1;
+                            System.out.println("上个交易日月份=" + lastTradeMonth);
+                            System.out.println("上个交易日日期=" + lastTradeDay);
+                        }
+                        continue firstTag;
+                    }
+                }
+
                 //判断target是否是周末，是就+1
                 if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                     continue;
                 }
 
-                //判断下一天是否是周末
-                cal.add(Calendar.DATE, 1);
-                String nextDay = sdf.format(cal.getTime());
-                if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                    cal.add(Calendar.DATE, 1);
-                    nextDay = sdf.format(cal.getTime());
-                    if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                        cal.add(Calendar.DATE, 1);
-                        nextDay = sdf.format(cal.getTime());
-                    }
-                }
-                System.out.println("nextDay=" + nextDay);
+
+
 //
 //                cal.add(Calendar.DATE, 1);
 //                String next2Day = sdf.format(cal.getTime());
@@ -122,35 +168,15 @@ public class FileUtils {
                         lastDay = sdf.format(cal2.getTime());
                     }
                 }
-                if (lastDay.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    lastDay = sdf.format(cal2.getTime());
+
+                //判断上一个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (lastDay.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        lastDay = sdf.format(cal2.getTime());
+                    }
                 }
-                if (lastDay.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    lastDay = sdf.format(cal2.getTime());
-                }
-                if (lastDay.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    lastDay = sdf.format(cal2.getTime());
-                }
-                if (lastDay.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    lastDay = sdf.format(cal2.getTime());
-                }
-                if (lastDay.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    lastDay = sdf.format(cal2.getTime());
-                }
-                if (lastDay.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    lastDay = sdf.format(cal2.getTime());
-                }
-                if (lastDay.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    lastDay = sdf.format(cal2.getTime());
-                }
-                System.out.println("lastDay=" + lastDay);
+                //System.out.println("lastDay=" + lastDay);
 
                 cal2.add(Calendar.DATE, -1);
                 String last2Day = sdf.format(cal2.getTime());
@@ -162,35 +188,15 @@ public class FileUtils {
                         last2Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last2Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last2Day = sdf.format(cal2.getTime());
+
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last2Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last2Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last2Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last2Day = sdf.format(cal2.getTime());
-                }
-                if (last2Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last2Day = sdf.format(cal2.getTime());
-                }
-                if (last2Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last2Day = sdf.format(cal2.getTime());
-                }
-                if (last2Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last2Day = sdf.format(cal2.getTime());
-                }
-                if (last2Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last2Day = sdf.format(cal2.getTime());
-                }
-                if (last2Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last2Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last2Day=" + last2Day);
+                //System.out.println("last2Day=" + last2Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last3Day = sdf.format(cal2.getTime());
@@ -202,35 +208,15 @@ public class FileUtils {
                         last3Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last3Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last3Day = sdf.format(cal2.getTime());
+
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last3Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last3Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last3Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last3Day = sdf.format(cal2.getTime());
-                }
-                if (last3Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last3Day = sdf.format(cal2.getTime());
-                }
-                if (last3Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last3Day = sdf.format(cal2.getTime());
-                }
-                if (last3Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last3Day = sdf.format(cal2.getTime());
-                }
-                if (last3Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last3Day = sdf.format(cal2.getTime());
-                }
-                if (last3Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last3Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last3Day=" + last3Day);
+                //System.out.println("last3Day=" + last3Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last4Day = sdf.format(cal2.getTime());
@@ -242,35 +228,14 @@ public class FileUtils {
                         last4Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last4Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last4Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last4Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last4Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last4Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last4Day = sdf.format(cal2.getTime());
-                }
-                if (last4Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last4Day = sdf.format(cal2.getTime());
-                }
-                if (last4Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last4Day = sdf.format(cal2.getTime());
-                }
-                if (last4Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last4Day = sdf.format(cal2.getTime());
-                }
-                if (last4Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last4Day = sdf.format(cal2.getTime());
-                }
-                if (last4Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last4Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last4Day=" + last4Day);
+                //System.out.println("last4Day=" + last4Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last5Day = sdf.format(cal2.getTime());
@@ -282,35 +247,14 @@ public class FileUtils {
                         last5Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last5Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last5Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last5Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last5Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last5Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last5Day = sdf.format(cal2.getTime());
-                }
-                if (last5Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last5Day = sdf.format(cal2.getTime());
-                }
-                if (last5Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last5Day = sdf.format(cal2.getTime());
-                }
-                if (last5Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last5Day = sdf.format(cal2.getTime());
-                }
-                if (last5Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last5Day = sdf.format(cal2.getTime());
-                }
-                if (last5Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last5Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last5Day=" + last5Day);
+                //System.out.println("last5Day=" + last5Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last6Day = sdf.format(cal2.getTime());
@@ -322,35 +266,14 @@ public class FileUtils {
                         last6Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last6Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last6Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last6Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last6Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last6Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last6Day = sdf.format(cal2.getTime());
-                }
-                if (last6Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last6Day = sdf.format(cal2.getTime());
-                }
-                if (last6Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last6Day = sdf.format(cal2.getTime());
-                }
-                if (last6Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last6Day = sdf.format(cal2.getTime());
-                }
-                if (last6Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last6Day = sdf.format(cal2.getTime());
-                }
-                if (last6Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last6Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last6Day=" + last6Day);
+                //System.out.println("last6Day=" + last6Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last7Day = sdf.format(cal2.getTime());
@@ -362,35 +285,14 @@ public class FileUtils {
                         last7Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last7Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last7Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last7Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last7Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last7Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last7Day = sdf.format(cal2.getTime());
-                }
-                if (last7Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last7Day = sdf.format(cal2.getTime());
-                }
-                if (last7Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last7Day = sdf.format(cal2.getTime());
-                }
-                if (last7Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last7Day = sdf.format(cal2.getTime());
-                }
-                if (last7Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last7Day = sdf.format(cal2.getTime());
-                }
-                if (last7Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last7Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last7Day=" + last7Day);
+                //System.out.println("last7Day=" + last7Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last8Day = sdf.format(cal2.getTime());
@@ -402,35 +304,14 @@ public class FileUtils {
                         last8Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last8Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last8Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last8Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last8Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last8Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last8Day = sdf.format(cal2.getTime());
-                }
-                if (last8Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last8Day = sdf.format(cal2.getTime());
-                }
-                if (last8Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last8Day = sdf.format(cal2.getTime());
-                }
-                if (last8Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last8Day = sdf.format(cal2.getTime());
-                }
-                if (last8Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last8Day = sdf.format(cal2.getTime());
-                }
-                if (last8Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last8Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last8Day=" + last8Day);
+                //System.out.println("last8Day=" + last8Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last9Day = sdf.format(cal2.getTime());
@@ -442,35 +323,14 @@ public class FileUtils {
                         last9Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last9Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last9Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last9Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last9Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last9Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last9Day = sdf.format(cal2.getTime());
-                }
-                if (last9Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last9Day = sdf.format(cal2.getTime());
-                }
-                if (last9Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last9Day = sdf.format(cal2.getTime());
-                }
-                if (last9Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last9Day = sdf.format(cal2.getTime());
-                }
-                if (last9Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last9Day = sdf.format(cal2.getTime());
-                }
-                if (last9Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last9Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last9Day=" + last9Day);
+                //System.out.println("last9Day=" + last9Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last10Day = sdf.format(cal2.getTime());
@@ -482,35 +342,14 @@ public class FileUtils {
                         last10Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last10Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last10Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last10Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last10Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last10Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last10Day = sdf.format(cal2.getTime());
-                }
-                if (last10Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last10Day = sdf.format(cal2.getTime());
-                }
-                if (last10Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last10Day = sdf.format(cal2.getTime());
-                }
-                if (last10Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last10Day = sdf.format(cal2.getTime());
-                }
-                if (last10Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last10Day = sdf.format(cal2.getTime());
-                }
-                if (last10Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last10Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last10Day=" + last10Day);
+                //System.out.println("last10Day=" + last10Day);
 
                 cal2.add(Calendar.DATE, -1);
                 String last11Day = sdf.format(cal2.getTime());
@@ -522,35 +361,14 @@ public class FileUtils {
                         last11Day = sdf.format(cal2.getTime());
                     }
                 }
-                if (last11Day.equals(HOLIDAY1)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last11Day = sdf.format(cal2.getTime());
+                //判断这个交易日是否是假期
+                for (String date: HOLIDAY_MAP.keySet()) {
+                    if (last10Day.equals(date) && HOLIDAY_MAP.get(date) != null) {
+                        cal2.add(Calendar.DATE, HOLIDAY_MAP.get(date));
+                        last10Day = sdf.format(cal2.getTime());
+                    }
                 }
-                if (last11Day.equals(HOLIDAY2)) {
-                    cal2.add(Calendar.DATE, -3);
-                    last11Day = sdf.format(cal2.getTime());
-                }
-                if (last11Day.equals(HOLIDAY3)) {
-                    cal2.add(Calendar.DATE, -7);
-                    last11Day = sdf.format(cal2.getTime());
-                }
-                if (last11Day.equals(HOLIDAY4)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last11Day = sdf.format(cal2.getTime());
-                }
-                if (last11Day.equals(HOLIDAY5)) {
-                    cal2.add(Calendar.DATE, -4);
-                    last11Day = sdf.format(cal2.getTime());
-                }
-                if (last11Day.equals(HOLIDAY6)) {
-                    cal2.add(Calendar.DATE, -5);
-                    last11Day = sdf.format(cal2.getTime());
-                }
-                if (last11Day.equals(HOLIDAY7)) {
-                    cal2.add(Calendar.DATE, -1);
-                    last11Day = sdf.format(cal2.getTime());
-                }
-                System.out.println("last11Day=" + last11Day);
+                //System.out.println("last11Day=" + last11Day);
 
 //
 //                //3天前
@@ -590,12 +408,10 @@ public class FileUtils {
 
 
                 //选出强势的
-                //sb.append(targetDay).append("9点15分分时涨幅大于9 ");
-                //sb.append(targetDay).append("9点19分分时涨幅大于5.3 ");
+                sb.append(targetDay).append("9点15分分时涨幅大于9 ");
+                sb.append(targetDay).append("9点19分分时涨幅大于5.3 ");
                 //竞价在可盈利区间
-                //sb.append(targetDay).append("9点25分分时涨跌幅大于-0.3小于5.1 ");
-                //开盘没有被砸太猛
-                //sb.append(targetDay).append("9点31分分时涨跌幅-").append(targetDay).append("9点30分分时涨跌幅大于-1.5 ");
+                sb.append(targetDay).append("9点25分分时涨跌幅大于-0.3小于5.1 ");
                 //有人玩的
                 sb.append(lastDay).append("成交额大于1.5亿 ");
                 sb.append(lastDay).append("涨停或涨停被砸 ");
