@@ -49,6 +49,7 @@ public class FileUtils {
     public static final Map<String, Integer> HOLIDAY_MAP = new HashMap<>();
 
     static {
+        HOLIDAY_MAP.put("2021年1月1日", -1);
         HOLIDAY_MAP.put("2021年2月17日", -7);
         HOLIDAY_MAP.put("2021年4月5日", -3);
         HOLIDAY_MAP.put("2021年5月5日", -5);
@@ -70,7 +71,7 @@ public class FileUtils {
     /**
      * 当前年份
      */
-    public static final int CURRENT_YEAR = 2022;
+    public static final int CURRENT_YEAR = 2021;
     /**
      * 想要开始的月份
      */
@@ -78,7 +79,7 @@ public class FileUtils {
     /**
      * 想要结束的月份
      */
-    public static final int MONTH_END = 2;
+    public static final int MONTH_END = 12;
     //---------------------------设置上面几个参数就可以了----------------------------------------------//
 
     public static void main(String[] args) {
@@ -90,7 +91,6 @@ public class FileUtils {
         StringBuilder sb = new StringBuilder();
         for (int i = MONTH_END - 1; i >= BEGIN_MONTH - 1; i--) {
 
-            cal.set(Calendar.YEAR, CURRENT_YEAR);
             cal.set(Calendar.MONTH, i);
             //这个月第一天
             int firstDay = cal.getActualMinimum(Calendar.DAY_OF_MONTH);
@@ -103,11 +103,10 @@ public class FileUtils {
             for (int j = endDay; j >= firstDay; j--) {
 
                 //最后一天好像是有问题的
-                if (j == 31 && i == 11) {
-                    continue;
-                }
+//                if (j == 31 && i == 11) {
+//                    continue;
+//                }
 
-                cal.set(Calendar.YEAR, CURRENT_YEAR);
                 cal.set(Calendar.MONTH, i);
                 cal.set(Calendar.DATE, j);
                 String targetDay = sdf.format(cal.getTime());
@@ -153,7 +152,7 @@ public class FileUtils {
 //                System.out.println("next2Day=" + next2Day);
 
                 Calendar cal2 = Calendar.getInstance();
-                cal2.set(Calendar.YEAR, 2022);
+                cal2.set(Calendar.YEAR, cal.get(Calendar.YEAR));
                 cal2.set(Calendar.MONTH, i);
                 cal2.set(Calendar.DATE, j);
 
