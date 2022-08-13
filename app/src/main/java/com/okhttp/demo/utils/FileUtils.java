@@ -71,11 +71,11 @@ public class FileUtils {
     /**
      * 当前年份
      */
-    public static final int CURRENT_YEAR = 2021;
+    public static final int CURRENT_YEAR = 2022;
     /**
      * 想要开始的月份
      */
-    public static final int BEGIN_MONTH = 1;
+    public static final int BEGIN_MONTH = 7;
     /**
      * 想要结束的月份
      */
@@ -408,12 +408,19 @@ public class FileUtils {
 
                 //选出强势的
                 sb.append(targetDay).append("9点15分分时涨幅大于9 ");
-                sb.append(targetDay).append("9点19分分时涨幅大于5.3 ");
+                sb.append(targetDay).append("9点17分分时涨幅大于9 ");
+                sb.append(targetDay).append("9点19分分时涨幅大于9 ");
+                sb.append(targetDay).append("9点21分分时涨幅大于9 ");
+//                sb.append(targetDay).append("9点25分分时涨跌幅小于7 ");
+//                sb.append(targetDay).append("9点19分分时涨幅大于5.3 ");
                 //竞价在可盈利区间
-                sb.append(targetDay).append("9点25分分时涨跌幅大于-0.3小于5.1 ");
+//                sb.append("按照").append(targetDay).append("9点25分分时涨跌幅排序 ");
                 //有人玩的
+                //sb.append("按照").append(targetDay).append("9点20分分时涨跌幅排序 ");
                 sb.append(lastDay).append("成交额大于1.5亿 ");
                 sb.append(lastDay).append("涨停或涨停被砸 ");
+                sb.append(lastDay).append("封板金额大于1000万 ");
+                //sb.append("(").append(lastDay).append("的收盘价-").append(lastDay).append("的平均成本)/").append(lastDay).append("的平均成本<10% ");
                 //有新入资金
                 sb.append(lastDay).append("成交额大于").append(last2Day).append("成交额的1.25倍 ");
                 //前面盈利空间不能太大
@@ -428,7 +435,7 @@ public class FileUtils {
                 sb.append(last8Day).append("未涨停 ");
                 sb.append(last9Day).append("未涨停 ");
                 sb.append(last10Day).append("未涨停 ");
-                sb.append(last11Day).append("未涨停 ");
+//                sb.append(last11Day).append("未涨停 ");
 
 
 
